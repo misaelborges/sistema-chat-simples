@@ -30,4 +30,11 @@ public class UserController {
         List<UserResponseDTO> userResponseDTOS = userService.listarUsuarios();
         return userResponseDTOS;
     }
+
+    @PutMapping("/{id}")
+    public UserResponseDTO atualizarUsuario(@PathVariable Long id, @Valid @RequestBody UserRequestDTO userRequestDTO) {
+        UserResponseDTO userResponseDTO = userService.atualizarUsuario(id, userRequestDTO);
+        return userResponseDTO;
+
+    }
 }
