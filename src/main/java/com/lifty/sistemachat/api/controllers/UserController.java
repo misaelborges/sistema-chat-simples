@@ -4,6 +4,8 @@ import com.lifty.sistemachat.api.dto.user.UserRequestDTO;
 import com.lifty.sistemachat.api.dto.user.UserResponseDTO;
 import com.lifty.sistemachat.domain.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,33 +21,34 @@ public class UserController {
     }
 
     @PostMapping
-    public UserResponseDTO salvarUsuario(@Valid @RequestBody UserRequestDTO userRequestDTO) {
+    public ResponseEntity<UserResponseDTO> salvarUsuario(@Valid @RequestBody UserRequestDTO userRequestDTO) {
         UserResponseDTO userResponseDTO = userService.salvarUsuario(userRequestDTO);
-        return userResponseDTO;
+        return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDTO);
 
     }
 
     @GetMapping
-    public List<UserResponseDTO> listarUsusario() {
+    public ResponseEntity<List<UserResponseDTO>> listarUsusario() {
         List<UserResponseDTO> userResponseDTOS = userService.listarUsuarios();
-        return userResponseDTOS;
+        return ResponseEntity.status(HttpStatus.OK).body(userResponseDTOS);
     }
 
     @PutMapping("/{id}")
-    public UserResponseDTO atualizarUsuario(@PathVariable Long id, @Valid @RequestBody UserRequestDTO userRequestDTO) {
+    public ResponseEntity<UserResponseDTO> atualizarUsuario(@PathVariable Long id, @Valid @RequestBody UserRequestDTO userRequestDTO) {
         UserResponseDTO userResponseDTO = userService.atualizarUsuario(id, userRequestDTO);
-        return userResponseDTO;
+        return ResponseEntity.status(HttpStatus.OK).body(userResponseDTO);
 
     }
 
     @GetMapping("/buscar/{id}")
-    public UserResponseDTO buscarUserPorId(@PathVariable Long id) {
+    public ResponseEntity<UserResponseDTO> buscarUserPorId(@PathVariable Long id) {
         UserResponseDTO userResponseDTO = userService.buscarUserPorId(id);
-        return userResponseDTO;
+        return ResponseEntity.status(HttpStatus.OK).body(userResponseDTO);
     }
 
     @DeleteMapping("/{id}")
-    public void deletarUsuario(@PathVariable Long id) {
+    public ResponseEntity<?> deletarUsuario(@PathVariable Long id) {
         userService.deletarUsuario(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
