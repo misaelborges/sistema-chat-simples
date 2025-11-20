@@ -23,16 +23,16 @@ public class Conversa {
     private User destinatario;
 
     @CreationTimestamp
-    private LocalTime criada_em;
+    private LocalTime criadaEm;
 
     public Conversa() {
     }
 
-    public Conversa(Long id, User remetente, User destinatario, LocalTime criada_em) {
+    public Conversa(Long id, User remetente, User destinatario, LocalTime criadaEm) {
         this.id = id;
         this.remetente = remetente;
         this.destinatario = destinatario;
-        this.criada_em = criada_em;
+        this.criadaEm = criadaEm;
     }
 
     public Long getId() {
@@ -59,12 +59,12 @@ public class Conversa {
         this.destinatario = destinatario;
     }
 
-    public LocalTime getCriada_em() {
-        return criada_em;
+    public LocalTime getCriadaEm() {
+        return criadaEm;
     }
 
-    public void setCriada_em(LocalTime criada_em) {
-        this.criada_em = criada_em;
+    public void setCriadaEm(LocalTime criadaEm) {
+        this.criadaEm = criadaEm;
     }
 
     @Override
