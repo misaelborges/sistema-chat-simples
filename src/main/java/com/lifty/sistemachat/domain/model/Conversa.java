@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,16 +24,20 @@ public class Conversa {
     @JoinColumn(name = "id_usuario_destinatario")
     private User destinatario;
 
+    @OneToMany(mappedBy = "conversa")
+    private List<Mensagem> mensagems = new ArrayList<>();
+
     @CreationTimestamp
     private LocalTime criadaEm;
 
     public Conversa() {
     }
 
-    public Conversa(Long id, User remetente, User destinatario, LocalTime criadaEm) {
+    public Conversa(Long id, User remetente, User destinatario, List<Mensagem> mensagems, LocalTime criadaEm) {
         this.id = id;
         this.remetente = remetente;
         this.destinatario = destinatario;
+        this.mensagems = mensagems;
         this.criadaEm = criadaEm;
     }
 
@@ -57,6 +63,14 @@ public class Conversa {
 
     public void setDestinatario(User destinatario) {
         this.destinatario = destinatario;
+    }
+
+    public List<Mensagem> getMensagems() {
+        return mensagems;
+    }
+
+    public void setMensagems(List<Mensagem> mensagems) {
+        this.mensagems = mensagems;
     }
 
     public LocalTime getCriadaEm() {
