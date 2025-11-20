@@ -1,11 +1,13 @@
 package com.lifty.sistemachat.domain.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.util.Objects;
 
 @Entity
 @Table(name = "tbl_user")
+@Builder
 public class User {
 
     @Id
