@@ -43,4 +43,9 @@ public class UserController {
         UserResponseDTO userResponseDTO = userService.buscarUserPorId(id);
         return userResponseDTO;
     }
+
+    @DeleteMapping("/{id}")
+    public void deletarUsuario(@PathVariable Long id) {
+        userService.deletarUsuario(id);
+    }
 }
