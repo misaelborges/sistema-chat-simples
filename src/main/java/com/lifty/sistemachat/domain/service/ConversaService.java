@@ -2,6 +2,7 @@ package com.lifty.sistemachat.domain.service;
 
 import com.lifty.sistemachat.api.dto.conversa.ConversaRequestDTO;
 import com.lifty.sistemachat.api.dto.conversa.ConversaResponseDTO;
+import com.lifty.sistemachat.api.dto.conversa.ConversaResponseResumoDTO;
 import com.lifty.sistemachat.core.mapper.ConversaMapper;
 import com.lifty.sistemachat.domain.model.Conversa;
 import com.lifty.sistemachat.domain.model.User;
@@ -9,6 +10,7 @@ import com.lifty.sistemachat.domain.repositorie.ConversaRepository;
 import com.lifty.sistemachat.domain.repositorie.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,6 +42,15 @@ public class ConversaService {
         }
 
         return conversaMapper.toResponseDTO(conversaUsuarios.get());
+    }
+
+    public List<ConversaResponseResumoDTO> listarConversas() {
+        List<Conversa> conversas = conversaRepository.findAll();
+        List<ConversaResponseResumoDTO> conversaResponseResumoDTOS = conversas.stream()
+                .map(conversaMapper::toResponseResumoDTO)
+                .toList();
+
+        return conversaResponseResumoDTOS;
     }
 
     private User buscaUser(Long id) {
