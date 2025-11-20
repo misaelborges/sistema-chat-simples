@@ -4,10 +4,9 @@ import com.lifty.sistemachat.api.dto.user.UserRequestDTO;
 import com.lifty.sistemachat.api.dto.user.UserResponseDTO;
 import com.lifty.sistemachat.domain.service.UserService;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -24,5 +23,11 @@ public class UserController {
         UserResponseDTO userResponseDTO = userService.salvarUsuario(userRequestDTO);
         return userResponseDTO;
 
+    }
+
+    @GetMapping
+    public List<UserResponseDTO> listarUsusario() {
+        List<UserResponseDTO> userResponseDTOS = userService.listarUsuarios();
+        return userResponseDTOS;
     }
 }
