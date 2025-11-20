@@ -5,7 +5,10 @@ import com.lifty.sistemachat.api.dto.user.UserResponseDTO;
 import com.lifty.sistemachat.core.openapi.mapper.UserMapper;
 import com.lifty.sistemachat.domain.model.User;
 import com.lifty.sistemachat.domain.repositorie.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -22,5 +25,14 @@ public class UserService {
         User user = userMapper.toEntity(usuarioRequestDTO);
         user = userRepository.save(user);
         return userMapper.toUserResponseDTO(user);
+    }
+
+    public List<UserResponseDTO> listarUsuarios() {
+        List<User> users = userRepository.findAll();
+        List<UserResponseDTO> userResponseDTOS = users.stream()
+                .map(userMapper::toUserResponseDTO)
+                .toList();
+
+        return userResponseDTOS;
     }
 }
