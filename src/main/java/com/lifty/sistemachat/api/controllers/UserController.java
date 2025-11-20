@@ -37,4 +37,10 @@ public class UserController {
         return userResponseDTO;
 
     }
+
+    @GetMapping("/buscar/{id}")
+    public UserResponseDTO buscarUserPorId(@PathVariable Long id) {
+        UserResponseDTO userResponseDTO = userService.buscarUserPorId(id);
+        return userResponseDTO;
+    }
 }
