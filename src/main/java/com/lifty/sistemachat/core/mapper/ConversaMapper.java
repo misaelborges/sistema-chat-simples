@@ -18,4 +18,11 @@ public class ConversaMapper {
                 conversa.getMensagems(),
                 conversa.getCriadaEm());
     }
+
+    public ConversaResponseResumoDTO toResponseResumoDTO(Conversa conversa) {
+        return new ConversaResponseResumoDTO(
+                conversa.getId(),
+                new UserResponseResumoDTO(conversa.getRemetente().getNome()),
+                new UserResponseResumoDTO(conversa.getDestinatario().getNome()));
+    }
 }
