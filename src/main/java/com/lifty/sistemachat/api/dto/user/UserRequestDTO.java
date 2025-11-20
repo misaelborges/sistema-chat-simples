@@ -1,4 +1,8 @@
 package com.lifty.sistemachat.api.dto.user;
 
-public record UserRequestDTO(String nome) {
+import jakarta.validation.constraints.NotBlank;
+
+public record UserRequestDTO(
+        @NotBlank(message = "Nome do usuario não pode ser em branco")
+        String nome) {
 }
