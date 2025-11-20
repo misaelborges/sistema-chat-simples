@@ -50,6 +50,11 @@ public class UserService {
         return userResponseDTO;
     }
 
+    public void deletarUsuario(Long id) {
+        User user = buscaUser(id);
+        userRepository.deleteById(user.getId());
+    }
+
     private User buscaUser(Long id) {
         return userRepository.findById(id).orElseThrow(
                 () -> new RuntimeException(String.format("Usuario com %d não existe", id)));
