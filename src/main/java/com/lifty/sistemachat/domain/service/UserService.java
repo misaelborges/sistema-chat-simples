@@ -5,7 +5,7 @@ import com.lifty.sistemachat.api.dto.user.UserResponseDTO;
 import com.lifty.sistemachat.core.openapi.mapper.UserMapper;
 import com.lifty.sistemachat.domain.model.User;
 import com.lifty.sistemachat.domain.repositorie.UserRepository;
-import jakarta.transaction.Transactional;
+import org.apache.catalina.Manager;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,5 +34,14 @@ public class UserService {
                 .toList();
 
         return userResponseDTOS;
+    }
+
+    public UserResponseDTO atualizarUsuario(Long id, UserRequestDTO usuarioRequestDTO) {
+        User user = userRepository.findById(id).orElseThrow(
+                () -> new RuntimeException(String.format("Usuario com %d não existe", id)));
+
+        user.setNome(usuarioRequestDTO.nome());
+        user = userRepository.save(user);
+        return userMapper.toUserResponseDTO(user);
     }
 }
