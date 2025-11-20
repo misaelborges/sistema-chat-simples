@@ -1,4 +1,4 @@
-package com.lifty.sistemachat.core.openapi.mapper;
+package com.lifty.sistemachat.core.mapper;
 
 import com.lifty.sistemachat.api.dto.user.UserRequestDTO;
 import com.lifty.sistemachat.api.dto.user.UserResponseDTO;
