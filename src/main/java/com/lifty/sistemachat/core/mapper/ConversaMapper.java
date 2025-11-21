@@ -15,7 +15,6 @@ public class ConversaMapper {
                 conversa.getId(),
                 new UserResponseDTO(conversa.getRemetente().getId(), conversa.getRemetente().getNome()),
                 new UserResponseDTO(conversa.getDestinatario().getId(), conversa.getDestinatario().getNome()),
-                conversa.getMensagems(),
                 conversa.getCriadaEm());
     }
 
