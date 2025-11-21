@@ -1,13 +1,14 @@
 package com.lifty.sistemachat.domain.service;
 
+
 import com.lifty.sistemachat.api.dto.conversa.ConversaRequestDTO;
 import com.lifty.sistemachat.api.dto.conversa.ConversaResponseDTO;
 import com.lifty.sistemachat.api.dto.conversa.ConversaResponseResumoDTO;
 import com.lifty.sistemachat.core.mapper.ConversaMapper;
 import com.lifty.sistemachat.domain.model.Conversa;
 import com.lifty.sistemachat.domain.model.User;
-import com.lifty.sistemachat.domain.repositorie.ConversaRepository;
-import com.lifty.sistemachat.domain.repositorie.UserRepository;
+import com.lifty.sistemachat.domain.repository.ConversaRepository;
+import com.lifty.sistemachat.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,8 +29,8 @@ public class ConversaService {
 
     public ConversaResponseDTO criarConversa(ConversaRequestDTO conversaRequestDTO) {
         Conversa conversa;
-        User remetente = buscaUser(conversaRequestDTO.destinatario());
-        User destinatario = buscaUser(conversaRequestDTO.remetente());
+        User remetente = buscaUser(conversaRequestDTO.remetente());
+        User destinatario = buscaUser(conversaRequestDTO.destinatario());
 
         Optional<Conversa> conversaUsuarios = conversaRepository.findConversaEntreUsuarios(remetente.getId(), destinatario.getId());
 

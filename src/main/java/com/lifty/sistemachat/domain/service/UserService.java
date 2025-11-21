@@ -1,10 +1,11 @@
 package com.lifty.sistemachat.domain.service;
 
+
 import com.lifty.sistemachat.api.dto.user.UserRequestDTO;
 import com.lifty.sistemachat.api.dto.user.UserResponseDTO;
 import com.lifty.sistemachat.core.mapper.UserMapper;
 import com.lifty.sistemachat.domain.model.User;
-import com.lifty.sistemachat.domain.repositorie.UserRepository;
+import com.lifty.sistemachat.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

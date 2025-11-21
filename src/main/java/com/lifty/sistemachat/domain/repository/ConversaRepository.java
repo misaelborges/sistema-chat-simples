@@ -1,4 +1,4 @@
-package com.lifty.sistemachat.domain.repositorie;
+package com.lifty.sistemachat.domain.repository;
 
 import com.lifty.sistemachat.domain.model.Conversa;
 import org.springframework.data.jpa.repository.JpaRepository;

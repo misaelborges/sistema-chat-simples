@@ -5,7 +5,6 @@ import com.lifty.sistemachat.api.dto.conversa.ConversaResponseDTO;
 import com.lifty.sistemachat.api.dto.conversa.ConversaResponseResumoDTO;
 import com.lifty.sistemachat.domain.service.ConversaService;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
